@@ -10,6 +10,9 @@ class AppViewModel extends ChangeNotifier {
   List<Promo> promos;
   List<Restaurant> restaurants;
 
+  // Can be a class
+  String selectedLocation = "Maitama, Abuja";
+
   Future fetchHomePage() async {
     // Using future builder
     // Data to be displayed at the homepage

@@ -58,6 +58,7 @@ class _NewInGrigoraState extends State<NewInGrigora> {
         width: 400,
         child: RestaurantTile(
           restaurant: restaurants.elementAt(index),
+          asHorizontal: true,
         ),
       ),
     );

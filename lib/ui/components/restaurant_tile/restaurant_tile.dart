@@ -11,13 +11,14 @@ import 'package:flutter_grigora/utils/utils.dart';
 class RestaurantTile extends StatelessWidget {
   final Restaurant restaurant;
   final Function(Restaurant restaurant) onRestaurantTapped; // needed?
+  final bool asHorizontal;
 
-  RestaurantTile({@required this.restaurant, this.onRestaurantTapped});
+  RestaurantTile({@required this.restaurant, this.onRestaurantTapped, this.asHorizontal = false});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: asHorizontal ? 200 : null,
       child: Row(
         children: [
           Expanded(
