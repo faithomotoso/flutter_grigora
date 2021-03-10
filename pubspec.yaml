@@ -69,6 +69,8 @@ flutter:
     - family: Raleway
       fonts:
         - asset: assets/font/Raleway-Regular.ttf
+        - asset: assets/font/Raleway-Bold.ttf
+          weight: 700
 
   #   - family: Schyler
   #     fonts:

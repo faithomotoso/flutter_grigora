@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_grigora/business_logic/models/Promo.dart';
 import 'package:flutter_grigora/business_logic/view_models/AppViewModel.dart';
 import 'package:flutter_grigora/ui/components/loading_indicator.dart';
+import 'package:flutter_grigora/ui/components/network_image/network_image.dart';
 import 'package:flutter_grigora/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_grigora/utils/app_font_styles.dart';
@@ -19,6 +20,7 @@ class _OngoingPromotionsWidgetState extends State<OngoingPromotionsWidget> {
     return Container(
       decoration: BoxDecoration(color: Colors.black87),
       padding: bodyPadding.copyWith(left: 0, right: 0),
+      height: MediaQuery.of(context).size.height * 0.35,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -53,14 +55,14 @@ class _OngoingPromotionsWidgetState extends State<OngoingPromotionsWidget> {
       itemCount: promotions.length,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       itemBuilder: (context, index) {
-        return ClipRRect(
-          borderRadius: appBorderRadius,
-          child: CachedNetworkImage(
-            imageUrl: promotions.elementAt(index).imageUrl,
-            width: 250,
-            progressIndicatorBuilder: (context, _, progress) {
-              return LoadingIndicator();
-            },
+        return SizedBox(
+          width: 250,
+          child: ClipRRect(
+            borderRadius: appBorderRadius,
+            child: AppNetworkImage(
+              imageUrl: promotions.elementAt(index).imageUrl,
+              // width: 250,
+            ),
           ),
         );
       },

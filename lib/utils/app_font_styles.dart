@@ -21,7 +21,7 @@ class AppFontStyles {
       _getTheme(context).textTheme.headline6;
 
   static TextStyle headline6Bold(BuildContext context) =>
-      headline6(context).copyWith(fontWeight: FontWeight.bold,);
+      headline6(context).copyWith(fontWeight: FontWeight.w700,);
 
   static TextStyle body1(BuildContext context) =>
       _getTheme(context).textTheme.bodyText1;
