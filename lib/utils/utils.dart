@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,3 +18,7 @@ Future pushWithSettings(
 EdgeInsets bodyPadding = EdgeInsets.all(10);
 
 BorderRadius appBorderRadius = BorderRadius.circular(6);
+
+String genRandomDouble() {
+  return Random().nextDouble().toStringAsFixed(2);
+}

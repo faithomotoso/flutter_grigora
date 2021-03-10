@@ -1,3 +1,5 @@
+import 'package:flutter_grigora/utils/utils.dart';
+
 class Restaurant {
   int _id;
   String _name;
@@ -6,6 +8,7 @@ class Restaurant {
   int _preparingTime;
   double _averageRating;
   double _totalRating;
+  String _distanceString;
 
   int get id => _id;
 
@@ -21,6 +24,8 @@ class Restaurant {
 
   double get totalRating => _totalRating;
 
+  String get distanceString => _distanceString;
+
   Restaurant.fromJson(Map<String, dynamic> json) {
     this._id = json["id"];
     this._name = json["name"];
@@ -29,5 +34,7 @@ class Restaurant {
     this._preparingTime = json["preparing_time"];
     this._averageRating = json["average_rating"].toDouble();
     this._totalRating = json["total_rating"].toDouble();
+
+    this._distanceString = "${genRandomDouble()} KM Away";
   }
 }

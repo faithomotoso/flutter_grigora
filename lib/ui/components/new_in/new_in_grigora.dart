@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_grigora/business_logic/models/Restaurant.dart';
+import 'package:flutter_grigora/business_logic/view_models/AppViewModel.dart';
+import 'package:flutter_grigora/ui/components/restaurant_tile/restaurant_tile.dart';
 import 'package:flutter_grigora/ui/components/text/dynamic_heading.dart';
 import 'package:flutter_grigora/ui/components/tile/tile_subtitle_text.dart';
 import 'file:///C:/Users/user/AndroidStudioProjects/flutter_grigora/lib/ui/components/tile/tile_heading.dart';
@@ -15,10 +18,12 @@ class _NewInGrigoraState extends State<NewInGrigora> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 250,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           heading(),
+          Expanded(child: body()),
         ],
       ),
     );
@@ -34,6 +39,25 @@ class _NewInGrigoraState extends State<NewInGrigora> {
         ]),
         subtitle: TileSubtitleText(
           text: "Recently added vendors",
+        ),
+      ),
+    );
+  }
+
+  Widget body() {
+    List<Restaurant> restaurants = context.read<AppViewModel>().restaurants;
+    return ListView.separated(
+      separatorBuilder: (context, index) => SizedBox(
+        width: 16,
+      ),
+      itemCount: restaurants.length,
+      scrollDirection: Axis.horizontal,
+      padding: bodyPadding,
+      physics: BouncingScrollPhysics(),
+      itemBuilder: (context, index) => SizedBox(
+        width: 400,
+        child: RestaurantTile(
+          restaurant: restaurants.elementAt(index),
         ),
       ),
     );
