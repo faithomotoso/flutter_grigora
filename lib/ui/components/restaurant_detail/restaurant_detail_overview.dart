@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grigora/business_logic/models/RestaurantDetail.dart';
 import 'package:flutter_grigora/ui/components/button/round_button.dart';
 import 'package:flutter_grigora/ui/components/network_image/network_image.dart';
 import 'package:flutter_grigora/ui/components/rating/ratings_outline_with_review.dart';
+import 'package:flutter_grigora/ui/components/restaurant_detail/more_info/restaurant_detail_more_info.dart';
 import 'package:flutter_grigora/ui/components/restaurant_detail/restaurant_detail_time_fee.dart';
 import 'package:flutter_grigora/utils/app_font_styles.dart';
 import 'package:flutter_grigora/utils/colors.dart';
@@ -17,7 +19,8 @@ class RestaurantDetailOverview extends StatefulWidget {
   RestaurantDetailOverview({@required this.restaurantDetail});
 
   @override
-  _RestaurantDetailOverviewState createState() => _RestaurantDetailOverviewState();
+  _RestaurantDetailOverviewState createState() =>
+      _RestaurantDetailOverviewState();
 }
 
 class _RestaurantDetailOverviewState extends State<RestaurantDetailOverview> {
@@ -75,13 +78,13 @@ class _RestaurantDetailOverviewState extends State<RestaurantDetailOverview> {
       children: [
         Positioned.fill(
             child: AppNetworkImage(
-              imageUrl: restaurantDetail.profileImageUrl,
-              fit: BoxFit.cover,
-            )),
+          imageUrl: restaurantDetail.profileImageUrl,
+          fit: BoxFit.cover,
+        )),
         Positioned.fill(
             child: Container(
-              color: Colors.black.withOpacity(0.85),
-            )),
+          color: Colors.black.withOpacity(0.85),
+        )),
         Container(
           // height: 100,
           width: MediaQuery.of(context).size.width,
@@ -90,7 +93,7 @@ class _RestaurantDetailOverviewState extends State<RestaurantDetailOverview> {
             children: [
               CircleAvatar(
                 backgroundImage:
-                CachedNetworkImageProvider(restaurantDetail.imageUrl),
+                    CachedNetworkImageProvider(restaurantDetail.imageUrl),
                 radius: 75,
               ),
               SizedBox(
@@ -106,8 +109,8 @@ class _RestaurantDetailOverviewState extends State<RestaurantDetailOverview> {
               ),
               Text(
                 restaurantDetail.cuisines,
-                style: AppFontStyles.body1(context).copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold),
+                style: AppFontStyles.body1(context)
+                    .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 10,
@@ -174,14 +177,14 @@ class _RestaurantDetailOverviewState extends State<RestaurantDetailOverview> {
             child: Text(
               "NOT ACCEPTING",
               style:
-              TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
             ),
           ),
         ),
         Circle(size: 8, color: Colors.white),
         TextButton(
             onPressed: () {
-              // todo more info dialog
+              showMoreInfoDialog();
             },
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -257,5 +260,31 @@ class _RestaurantDetailOverviewState extends State<RestaurantDetailOverview> {
         )
       ],
     );
+  }
+
+  void showMoreInfoDialog() {
+    showCupertinoModalPopup(
+        context: context,
+        builder: (context) {
+
+          return Material(
+            child: FractionallySizedBox(
+              heightFactor: 0.8,
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: CloseButton(),
+                  ),
+                  Expanded(
+                    child: RestaurantDetailMoreInfo(
+                      restaurantDetail: restaurantDetail,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        });
   }
 }

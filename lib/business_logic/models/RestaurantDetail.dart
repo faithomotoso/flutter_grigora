@@ -13,6 +13,9 @@ class RestaurantDetail {
   String _distanceString;
   double _minOrder = 200;
   String _estimatedPrepTime;
+  String _address;
+  String _openingTime;
+  String _closingTime;
   List<RestaurantItem> _popularItems;
   List<RestaurantItem> _featuredItems;
 
@@ -38,6 +41,12 @@ class RestaurantDetail {
 
   String get prepTime => _estimatedPrepTime;
 
+  String get address => _address;
+
+  String get openingTime => formatTime(_openingTime);
+
+  String get closingTime => formatTime(_closingTime);
+
   List<RestaurantItem> get popularItems => _popularItems;
 
   List<RestaurantItem> get featuredItems => _featuredItems;
@@ -52,6 +61,9 @@ class RestaurantDetail {
     this._totalRating = json["total_rating"].toDouble();
     this._totalReview = json["total_review"];
     this._estimatedPrepTime = json["estimated_preparing_time"];
+    this._address = json["address"];
+    this._openingTime = json["opening_time"];
+    this._closingTime = json["closing_time"];
     this._popularItems = List<RestaurantItem>.from(
         json["popular_items"].map((p) => RestaurantItem.fromJson(p)));
     this._featuredItems = List<RestaurantItem>.from(
