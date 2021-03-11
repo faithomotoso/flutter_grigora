@@ -14,6 +14,7 @@ class RestaurantDetail {
   double _minOrder = 200;
   String _estimatedPrepTime;
   List<RestaurantItem> _popularItems;
+  List<RestaurantItem> _featuredItems;
 
   // double get deliveryFee => _deliveryFee;
 
@@ -39,6 +40,8 @@ class RestaurantDetail {
 
   List<RestaurantItem> get popularItems => _popularItems;
 
+  List<RestaurantItem> get featuredItems => _featuredItems;
+
   RestaurantDetail.fromJson(Map<String, dynamic> json) {
     this._id = json["restaurant_id"];
     this._deliveryFee = json["delivery_fee"].toDouble();
@@ -51,6 +54,8 @@ class RestaurantDetail {
     this._estimatedPrepTime = json["estimated_preparing_time"];
     this._popularItems = List<RestaurantItem>.from(
         json["popular_items"].map((p) => RestaurantItem.fromJson(p)));
+    this._featuredItems = List<RestaurantItem>.from(
+        json["featured_items"].map((f) => RestaurantItem.fromJson(f)));
 
     this._distanceString = "${genRandomDouble()} KM Away";
   }

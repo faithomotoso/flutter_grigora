@@ -5,6 +5,7 @@ import 'package:flutter_grigora/business_logic/models/Restaurant.dart';
 import 'package:flutter_grigora/business_logic/models/RestaurantDetail.dart';
 import 'package:flutter_grigora/business_logic/view_models/AppViewModel.dart';
 import 'package:flutter_grigora/ui/components/app_future_builder.dart';
+import 'package:flutter_grigora/ui/components/restaurant_detail/restaurant_detail_featured_items.dart';
 import 'package:flutter_grigora/ui/components/restaurant_detail/restaurant_detail_overview.dart';
 import 'package:flutter_grigora/ui/components/restaurant_detail/restuarant_detail_popular_items.dart';
 import 'package:flutter_grigora/ui/components/scaffold/app_scaffold.dart';
@@ -88,6 +89,11 @@ class _RestaurantDetailWidgetState extends State<RestaurantDetailWidget> {
         children: [
           RestaurantDetailPopularItems(
               popularItems: restaurantDetail.popularItems),
+          SizedBox(
+            height: 20,
+          ),
+          RestaurantDetailFeaturedItems(
+              featuredItems: restaurantDetail.featuredItems)
         ],
       ),
     );
