@@ -7,4 +7,8 @@ class AppApi {
   static Future getHomeScreenApi() {
     return _dio.get("/home");
   }
+
+  static Future getRestaurantDetail() {
+    return _dio.get("/details");
+  }
 }

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 Future pushWithSettings(
     {@required BuildContext context, @required Widget newPage}) {
@@ -21,4 +22,11 @@ BorderRadius appBorderRadius = BorderRadius.circular(6);
 
 String genRandomDouble() {
   return Random().nextDouble().toStringAsFixed(2);
+}
+
+String formatAmountWithCurrency(double amount) {
+  NumberFormat numberFormat =
+      NumberFormat.currency(symbol: "\u20A6", decimalDigits: 2);
+
+  return numberFormat.format(amount);
 }

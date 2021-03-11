@@ -3,8 +3,9 @@ import 'package:flutter_grigora/ui/components/app_bar/app_bar.dart';
 
 class AppScaffold extends StatefulWidget {
   final Widget child;
+  final bool showBackButton;
 
-  AppScaffold({@required this.child});
+  AppScaffold({@required this.child, this.showBackButton});
 
   @override
   _AppScaffoldState createState() => _AppScaffoldState();
@@ -15,7 +16,7 @@ class _AppScaffoldState extends State<AppScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: ApplicationBar(),
+      appBar: ApplicationBar(showBackButton: widget.showBackButton ?? false,),
       body: widget.child,
     );
   }

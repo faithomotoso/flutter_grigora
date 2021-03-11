@@ -30,7 +30,7 @@ class CuisineTile extends StatelessWidget {
           Text(
             cuisine.name,
             style: AppFontStyles.body1(context)
-                .copyWith(fontWeight: FontWeight.bold),
+                .copyWith(fontWeight: FontWeight.bold, fontSize: 12),
           )
         ],
       ),

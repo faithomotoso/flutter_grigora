@@ -20,7 +20,8 @@ class _OngoingPromotionsWidgetState extends State<OngoingPromotionsWidget> {
     return Container(
       decoration: BoxDecoration(color: Colors.black87),
       padding: bodyPadding.copyWith(left: 0, right: 0),
-      height: MediaQuery.of(context).size.height * 0.35,
+      // height: MediaQuery.of(context).size.height * 0.35,
+      height: 220,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

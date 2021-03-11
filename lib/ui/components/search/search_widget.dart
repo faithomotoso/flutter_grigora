@@ -26,7 +26,7 @@ class _SearchWidgetState extends State<SearchWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: bodyPadding,
+      padding: bodyPadding.copyWith(left: 40, right: 40),
       child: TextFormField(
         controller: searchController,
         onEditingComplete: () {

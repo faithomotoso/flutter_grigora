@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_grigora/business_logic/models/Restaurant.dart';
+import 'package:flutter_grigora/ui/components/circle.dart';
 import 'package:flutter_grigora/ui/components/network_image/network_image.dart';
 import 'package:flutter_grigora/ui/components/rating/ratings_filled_widget.dart';
+import 'package:flutter_grigora/ui/components/restaurant_detail/restaurant_detail_widget.dart';
 import 'package:flutter_grigora/ui/components/tile/tile_heading.dart';
 import 'package:flutter_grigora/ui/components/tile/tile_subtitle_text.dart';
 import 'package:flutter_grigora/utils/app_font_styles.dart';
@@ -13,32 +15,43 @@ class RestaurantTile extends StatelessWidget {
   final Function(Restaurant restaurant) onRestaurantTapped; // needed?
   final bool asHorizontal;
 
-  RestaurantTile({@required this.restaurant, this.onRestaurantTapped, this.asHorizontal = false});
+  RestaurantTile(
+      {@required this.restaurant,
+      this.onRestaurantTapped,
+      this.asHorizontal = false});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: asHorizontal ? 200 : null,
-      child: Row(
-        children: [
-          Expanded(
-            child: SizedBox(
-              // width: 160,
-              height: 150,
-              child: ClipRRect(
-                borderRadius: appBorderRadius,
-                child: AppNetworkImage(
-                  imageUrl: restaurant.imageUrl,
-                  fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        pushWithSettings(
+            context: context,
+            newPage: RestaurantDetailWidget(restaurant: restaurant));
+      },
+      child: Container(
+        height: asHorizontal ? 200 : null,
+        color: Colors.white,
+        child: Row(
+          children: [
+            Expanded(
+              child: SizedBox(
+                // width: 160,
+                height: 150,
+                child: ClipRRect(
+                  borderRadius: appBorderRadius,
+                  child: AppNetworkImage(
+                    imageUrl: restaurant.imageUrl,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Expanded(flex: 2, child: details(context)),
-        ],
+            SizedBox(
+              width: 10,
+            ),
+            Expanded(flex: 2, child: details(context)),
+          ],
+        ),
       ),
     );
   }
@@ -66,15 +79,9 @@ class RestaurantTile extends StatelessWidget {
               RatingsFilledWidget(
                 rating: restaurant.averageRating,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4),
-                child: Icon(
-                  Icons.circle,
-                  color: AppColors.yellow,
-                  size: 10,
-                ),
-              ),
-              Text("${restaurant.preparingTime} min${restaurant.preparingTime == 1 ? "" : "s"}")
+              Circle(size: 10, color: AppColors.yellow),
+              Text(
+                  "${restaurant.preparingTime} min${restaurant.preparingTime == 1 ? "" : "s"}")
             ],
           )
         ],

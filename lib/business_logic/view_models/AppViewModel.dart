@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_grigora/business_logic/models/Cuisine.dart';
 import 'package:flutter_grigora/business_logic/models/Promo.dart';
 import 'package:flutter_grigora/business_logic/models/Restaurant.dart';
+import 'package:flutter_grigora/business_logic/models/RestaurantDetail.dart';
 import 'package:flutter_grigora/services/AppApi.dart';
 
 class AppViewModel extends ChangeNotifier {
@@ -30,6 +31,17 @@ class AppViewModel extends ChangeNotifier {
       // Restaurants
       restaurants = List<Restaurant>.from(
           data["restaurants"].map((r) => Restaurant.fromJson(r)));
+    } on DioError {
+      rethrow;
+    }
+  }
+
+  Future getRestaurantDetail() async {
+    // Using future builder, return restaurant detail
+
+    try {
+      Response response = await AppApi.getRestaurantDetail();
+      return RestaurantDetail.fromJson(response.data);
     } on DioError {
       rethrow;
     }
