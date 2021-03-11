@@ -13,7 +13,7 @@ class Circle extends StatelessWidget {
       child: Icon(
         Icons.circle,
         color: color,
-        size: size.toDouble() ?? 4,
+        size: size?.toDouble() ?? 4,
       ),
     );
   }

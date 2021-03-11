@@ -32,8 +32,8 @@ class Restaurant {
     this._imageUrl = json["image"];
     this._address = json["address"];
     this._preparingTime = json["preparing_time"];
-    this._averageRating = json["average_rating"].toDouble();
-    this._totalRating = json["total_rating"].toDouble();
+    this._averageRating = json["average_rating"]?.toDouble();
+    this._totalRating = json["total_rating"]?.toDouble();
 
     this._distanceString = "${genRandomDouble()} KM Away";
   }
