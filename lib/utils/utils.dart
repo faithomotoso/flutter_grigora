@@ -32,7 +32,7 @@ String formatAmountWithCurrency(double amount) {
 }
 
 String formatTime(String time) {
-  DateFormat dateFormat = DateFormat("hh:mm");
+  DateFormat dateFormat = DateFormat("hh:mm a");
   String date = DateTime.now().toString().split(" ").first;
   return dateFormat.format(DateTime.parse("$date $time"));
 }
