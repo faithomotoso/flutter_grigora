@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_grigora/ui/components/app_bar/app_bar.dart';
+import 'package:flutter_grigora/ui/components/drawer/app_drawer.dart';
 
 class AppScaffold extends StatefulWidget {
   final Widget child;
@@ -18,6 +19,7 @@ class _AppScaffoldState extends State<AppScaffold> {
       backgroundColor: Colors.white,
       appBar: ApplicationBar(showBackButton: widget.showBackButton ?? false,),
       body: widget.child,
+      endDrawer: AppDrawer(),
     );
   }
 }

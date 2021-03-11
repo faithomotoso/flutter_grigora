@@ -11,6 +11,11 @@ class AppViewModel extends ChangeNotifier {
   List<Promo> promos;
   List<Restaurant> restaurants;
 
+  String get companyPhoneNumber => "+234 901 066 9160";
+
+  String get companyEmail => "hello@grigora.ng";
+
+
   // Can be a class
   String selectedLocation = "Maitama, Abuja";
 

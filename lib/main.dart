@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_grigora/business_logic/view_models/AppDrawerState.dart';
 import 'package:flutter_grigora/business_logic/view_models/AppViewModel.dart';
 import 'package:flutter_grigora/utils/colors.dart';
 import 'package:provider/provider.dart';
@@ -19,8 +20,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => AppViewModel(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AppViewModel()),
+        ChangeNotifierProvider(create: (_) => AppDrawerState())
+      ],
       child: MaterialApp(
         title: 'Grigora',
         theme: ThemeData(
