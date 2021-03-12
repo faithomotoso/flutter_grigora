@@ -6,9 +6,9 @@ import 'package:flutter_grigora/ui/components/tile/tile_heading.dart';
 import 'package:flutter_grigora/ui/components/tile/tile_subtitle_text.dart';
 import 'package:flutter_grigora/utils/utils.dart';
 
-abstract class RestaurantDetailBaseSection<T extends StatefulWidget>
+abstract class RestaurantDetailBaseRestaurantSection<T extends StatefulWidget>
     extends State<T> {
-  // Reusable section in restaurant detail
+  // Reusable section in restaurant  for restaurants
   List<RestaurantItem> get items;
 
   DynamicHeading get heading;

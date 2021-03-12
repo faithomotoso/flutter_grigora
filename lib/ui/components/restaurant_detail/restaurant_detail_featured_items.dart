@@ -3,7 +3,7 @@ import 'package:flutter_grigora/business_logic/models/RestaurantItem.dart';
 import 'package:flutter_grigora/ui/components/text/dynamic_heading.dart';
 import 'package:flutter_grigora/utils/colors.dart';
 
-import 'base_section/restaurant_detail_base_section.dart';
+import 'base_section/restaurant_detail_base_restaurant_section.dart';
 
 class RestaurantDetailFeaturedItems extends StatefulWidget {
   final List<RestaurantItem> featuredItems;
@@ -16,7 +16,7 @@ class RestaurantDetailFeaturedItems extends StatefulWidget {
 }
 
 class _RestaurantDetailFeaturedItemsState
-    extends RestaurantDetailBaseSection<RestaurantDetailFeaturedItems> {
+    extends RestaurantDetailBaseRestaurantSection<RestaurantDetailFeaturedItems> {
   @override
   DynamicHeading get heading => DynamicHeading(texts: [
         DynamicHeadingText(text: "Featured", textColor: AppColors.yellow),

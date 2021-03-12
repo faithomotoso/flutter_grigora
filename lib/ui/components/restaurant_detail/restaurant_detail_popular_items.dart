@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_grigora/business_logic/models/RestaurantItem.dart';
-import 'package:flutter_grigora/ui/components/restaurant_detail/base_section/restaurant_detail_base_section.dart';
+import 'package:flutter_grigora/ui/components/restaurant_detail/base_section/restaurant_detail_base_restaurant_section.dart';
 import 'package:flutter_grigora/ui/components/text/dynamic_heading.dart';
 import 'package:flutter_grigora/utils/colors.dart';
 
@@ -15,7 +15,7 @@ class RestaurantDetailPopularItems extends StatefulWidget {
 }
 
 class _RestaurantDetailPopularItemsState
-    extends RestaurantDetailBaseSection<RestaurantDetailPopularItems> {
+    extends RestaurantDetailBaseRestaurantSection<RestaurantDetailPopularItems> {
   List<RestaurantItem> get popularItems => widget.popularItems;
 
   @override

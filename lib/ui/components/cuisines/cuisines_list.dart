@@ -5,12 +5,12 @@ import 'package:flutter_grigora/ui/components/cuisines/cuisine_tile.dart';
 import 'package:flutter_grigora/utils/utils.dart';
 import 'package:provider/provider.dart';
 
-class CuisinesList extends StatefulWidget {
+class CuisinesListWidget extends StatefulWidget {
   @override
-  _CuisinesListState createState() => _CuisinesListState();
+  _CuisinesListWidgetState createState() => _CuisinesListWidgetState();
 }
 
-class _CuisinesListState extends State<CuisinesList> {
+class _CuisinesListWidgetState extends State<CuisinesListWidget> {
   @override
   Widget build(BuildContext context) {
     List<Cuisine> cuisines = context.read<AppViewModel>().cuisines;

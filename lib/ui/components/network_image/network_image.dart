@@ -15,20 +15,11 @@ class AppNetworkImage extends CachedNetworkImage {
             imageUrl: imageUrl,
             fit: BoxFit.contain,
             progressIndicatorBuilder: (context, _, progress) =>
-                LoadingIndicator());
-}
-
-class AppOverlayNetworkImage extends ImageProvider {
-  @override
-  ImageStreamCompleter load(Object key, Future<Codec> Function(Uint8List bytes, {bool allowUpscaling, int cacheHeight, int cacheWidth}) decode) {
-    // TODO: implement load
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Object> obtainKey(ImageConfiguration configuration) {
-    // TODO: implement obtainKey
-    throw UnimplementedError();
-  }
-
+                LoadingIndicator(),
+            errorWidget: (context, _, error) => Center(
+                  child: Icon(
+                    Icons.broken_image_rounded,
+                    color: Colors.grey,
+                  ),
+                ));
 }

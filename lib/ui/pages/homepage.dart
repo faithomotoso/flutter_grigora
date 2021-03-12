@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                     searchHint: "Search for vendors and cuisines",
                     onEditingComplete: (query) {
                     }),
-                CuisinesList(),
+                CuisinesListWidget(),
                 SizedBox(height: 15,),
                 NewInGrigora(),
                 RestaurantsNearYou()

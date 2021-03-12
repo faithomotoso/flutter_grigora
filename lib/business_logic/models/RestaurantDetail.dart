@@ -1,3 +1,4 @@
+import 'package:flutter_grigora/business_logic/models/RestaurantDetailCategory.dart';
 import 'package:flutter_grigora/business_logic/models/RestaurantItem.dart';
 import 'package:flutter_grigora/utils/utils.dart';
 
@@ -18,6 +19,7 @@ class RestaurantDetail {
   String _closingTime;
   List<RestaurantItem> _popularItems;
   List<RestaurantItem> _featuredItems;
+  List<RestaurantDetailCategory> _categories;
 
   // double get deliveryFee => _deliveryFee;
 
@@ -51,6 +53,8 @@ class RestaurantDetail {
 
   List<RestaurantItem> get featuredItems => _featuredItems;
 
+  List<RestaurantDetailCategory> get categories => _categories;
+
   RestaurantDetail.fromJson(Map<String, dynamic> json) {
     this._id = json["restaurant_id"];
     this._deliveryFee = json["delivery_fee"].toDouble();
@@ -68,6 +72,8 @@ class RestaurantDetail {
         json["popular_items"].map((p) => RestaurantItem.fromJson(p)));
     this._featuredItems = List<RestaurantItem>.from(
         json["featured_items"].map((f) => RestaurantItem.fromJson(f)));
+    this._categories = List<RestaurantDetailCategory>.from(
+        json["all_data"].map((d) => RestaurantDetailCategory.fromJson(d)));
 
     this._distanceString = "${genRandomDouble()} KM Away";
   }

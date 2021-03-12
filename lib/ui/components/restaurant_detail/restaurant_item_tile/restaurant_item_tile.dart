@@ -3,7 +3,6 @@ import 'package:flutter_grigora/business_logic/models/RestaurantItem.dart';
 import 'package:flutter_grigora/ui/components/network_image/network_image.dart';
 import 'package:flutter_grigora/ui/components/rating/ratings_filled_widget.dart';
 import 'package:flutter_grigora/ui/components/tile/tile_heading.dart';
-import 'package:flutter_grigora/ui/components/tile/tile_subtitle_text.dart';
 import 'package:flutter_grigora/utils/app_font_styles.dart';
 import 'package:flutter_grigora/utils/colors.dart';
 import 'package:flutter_grigora/utils/utils.dart';
