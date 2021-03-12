@@ -7,7 +7,6 @@ import 'package:flutter_grigora/ui/components/promotions/ongoing_promotions_widg
 import 'package:flutter_grigora/ui/components/restaurants_near_you/restaurants_near_you.dart';
 import 'package:flutter_grigora/ui/components/scaffold/app_scaffold.dart';
 import 'package:flutter_grigora/ui/components/search/search_widget.dart';
-import 'package:flutter_grigora/ui/components/text/dynamic_heading.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {

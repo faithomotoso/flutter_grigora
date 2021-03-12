@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_grigora/business_logic/models/Restaurant.dart';
 import 'package:flutter_grigora/business_logic/view_models/AppViewModel.dart';
 import 'package:flutter_grigora/ui/components/base/RestaurantSectionBase.dart';
-import 'package:flutter_grigora/ui/components/restaurant_tile/restaurant_tile.dart';
 import 'package:flutter_grigora/ui/components/text/dynamic_heading.dart';
-import 'package:flutter_grigora/ui/components/tile/tile_heading.dart';
-import 'package:flutter_grigora/ui/components/tile/tile_subtitle_text.dart';
 import 'package:flutter_grigora/utils/colors.dart';
-import 'package:flutter_grigora/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class RestaurantsNearYou extends StatefulWidget {

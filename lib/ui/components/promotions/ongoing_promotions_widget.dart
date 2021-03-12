@@ -1,8 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grigora/business_logic/models/Promo.dart';
 import 'package:flutter_grigora/business_logic/view_models/AppViewModel.dart';
-import 'package:flutter_grigora/ui/components/loading_indicator.dart';
 import 'package:flutter_grigora/ui/components/network_image/network_image.dart';
 import 'package:flutter_grigora/utils/utils.dart';
 import 'package:provider/provider.dart';

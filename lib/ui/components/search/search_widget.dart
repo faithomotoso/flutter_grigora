@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_grigora/utils/colors.dart';
 import 'package:flutter_grigora/utils/utils.dart';
 
 class SearchWidget extends StatefulWidget {
