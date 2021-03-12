@@ -9,6 +9,7 @@ import 'package:flutter_grigora/ui/components/restaurant_detail/restaurant_detai
 import 'package:flutter_grigora/ui/components/restaurant_detail/restaurant_detail_popular_items.dart';
 import 'package:flutter_grigora/ui/components/scaffold/app_scaffold.dart';
 import 'package:provider/provider.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 
 class RestaurantDetailWidget extends StatefulWidget {
   final Restaurant restaurant;
@@ -22,11 +23,17 @@ class RestaurantDetailWidget extends StatefulWidget {
 class _RestaurantDetailWidgetState extends State<RestaurantDetailWidget> {
   RestaurantDetail restaurantDetail;
   Future detailFuture;
+  AutoScrollController autoScrollController;
 
   @override
   void initState() {
     super.initState();
     getDetail();
+    autoScrollController = AutoScrollController(
+      axis: Axis.vertical,
+      viewportBoundaryGetter: () =>
+          Rect.fromLTRB(0, 0, 0, MediaQuery.of(context).padding.bottom),
+    );
   }
 
   @override
@@ -41,17 +48,10 @@ class _RestaurantDetailWidgetState extends State<RestaurantDetailWidget> {
             });
           },
           child: CustomScrollView(
+            controller: autoScrollController,
             physics: BouncingScrollPhysics(),
-            slivers: [
-              topWidget(),
-              bodyAppBar(),
-              body()
-            ],
+            slivers: [topWidget(), bodyAppBar(), body()],
           ),
-          // child: ListView(
-          //   children: [topWidget(),
-          //   ],
-          // ),
         ));
   }
 
@@ -67,15 +67,38 @@ class _RestaurantDetailWidgetState extends State<RestaurantDetailWidget> {
     });
   }
 
-  SliverAppBar bodyAppBar() {
-    TabBarView(
-      controller: TabController(),
-    );
+  Widget bodyAppBar() {
+    if (restaurantDetail == null) return SizedBox();
 
-    return SliverAppBar(
+    return SliverPersistentHeader(
       pinned: true,
-      title: Text("Sample sliver appbar"),
-      expandedHeight: 100,
+      delegate: _AppSliverPersistentHeaderDelegate(
+        child: Container(
+          color: Colors.white,
+          child: ListView.separated(
+            separatorBuilder: (context, index) => SizedBox(
+              width: 14,
+            ),
+            scrollDirection: Axis.horizontal,
+            itemCount: restaurantDetail.categories.length,
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            itemBuilder: (context, index) => InkWell(
+              onTap: () async {
+                await autoScrollController.scrollToIndex(
+                  index,
+                  preferPosition: AutoScrollPosition.begin
+                );
+              },
+              child: Center(
+                child: Text(
+                  restaurantDetail.categories.elementAt(index).categoryName,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 
@@ -100,12 +123,43 @@ class _RestaurantDetailWidgetState extends State<RestaurantDetailWidget> {
           SizedBox(
             height: 20,
           ),
-          ...restaurantDetail.categories
-              .where((element) => element.cuisines.isNotEmpty)
-              .map((e) => RestaurantDetailCategoryWidget(category: e))
-              .toList()
+          // ...restaurantDetail.categories
+          //     .map((e) => AutoScrollTag(
+          //         child: RestaurantDetailCategoryWidget(category: e)))
+          //     .toList(),
+          for (int i = 0; i < restaurantDetail.categories.length; i++)
+            AutoScrollTag(
+                index: i,
+                key: ValueKey(i),
+                controller: autoScrollController,
+                child: RestaurantDetailCategoryWidget(
+                    category: restaurantDetail.categories.elementAt(i)))
         ],
       ),
     );
+  }
+}
+
+class _AppSliverPersistentHeaderDelegate
+    extends SliverPersistentHeaderDelegate {
+  Widget child;
+
+  _AppSliverPersistentHeaderDelegate({@required this.child});
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return child;
+  }
+
+  @override
+  double get maxExtent => 56.0;
+
+  @override
+  double get minExtent => 56.0;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return true;
   }
 }

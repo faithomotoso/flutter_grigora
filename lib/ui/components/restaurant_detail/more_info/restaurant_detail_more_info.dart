@@ -3,6 +3,7 @@ import 'package:flutter_grigora/business_logic/models/RestaurantDetail.dart';
 import 'package:flutter_grigora/utils/app_font_styles.dart';
 import 'package:flutter_grigora/utils/colors.dart';
 import 'package:flutter_grigora/utils/utils.dart';
+import 'package:flutter_grigora/utils/extensions/double_extension.dart';
 
 class RestaurantDetailMoreInfo extends StatelessWidget {
   final RestaurantDetail restaurantDetail;
@@ -30,7 +31,7 @@ class RestaurantDetailMoreInfo extends StatelessWidget {
           iconData: Icons.star_outline,
           headerText: "Average Rating",
           infoText:
-              "${restaurantDetail.totalRating} Star${restaurantDetail.totalRating == 1 ? "" : "s"}"),
+              "${restaurantDetail.totalRating.formatDouble()} Star${restaurantDetail.totalRating == 1 ? "" : "s"}"),
     ];
 
     return SingleChildScrollView(

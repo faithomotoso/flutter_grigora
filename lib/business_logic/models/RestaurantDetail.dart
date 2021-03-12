@@ -53,7 +53,7 @@ class RestaurantDetail {
 
   List<RestaurantItem> get featuredItems => _featuredItems;
 
-  List<RestaurantDetailCategory> get categories => _categories;
+  List<RestaurantDetailCategory> get categories => _categories.where((element) => element.cuisines.isNotEmpty).toList();
 
   RestaurantDetail.fromJson(Map<String, dynamic> json) {
     this._id = json["restaurant_id"];
