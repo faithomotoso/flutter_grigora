@@ -15,6 +15,8 @@ class AppViewModel extends ChangeNotifier {
 
   String get companyEmail => "hello@grigora.ng";
 
+  int get notificationCount => 17;
+
 
   // Can be a class
   String selectedLocation = "Maitama, Abuja";

@@ -13,12 +13,15 @@ class AppScaffold extends StatefulWidget {
 }
 
 class _AppScaffoldState extends State<AppScaffold> {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: ApplicationBar(showBackButton: widget.showBackButton ?? false,),
+      appBar: ApplicationBar(showBackButton: widget.showBackButton ?? false, scaffoldKey: scaffoldKey),
       body: widget.child,
+      key: scaffoldKey,
       endDrawer: AppDrawer(),
     );
   }

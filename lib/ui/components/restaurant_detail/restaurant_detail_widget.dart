@@ -69,6 +69,7 @@ class _RestaurantDetailWidgetState extends State<RestaurantDetailWidget> {
 
   Widget bodyAppBar() {
     if (restaurantDetail == null) return SizedBox();
+    if (restaurantDetail.categories.isEmpty) return SizedBox();
 
     return SliverPersistentHeader(
       pinned: true,

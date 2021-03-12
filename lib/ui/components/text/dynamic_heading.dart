@@ -22,12 +22,13 @@ class DynamicHeadingText extends TextSpan {
   final String text;
 
   // Using only color as that's the only thing that changes
-  final Color textColor;
+  Color textColor;
 
   DynamicHeadingText({@required this.text, this.textColor}) : super(
       text: text,
       style: TextStyle(color: textColor)
   );
+
 }
 
 
